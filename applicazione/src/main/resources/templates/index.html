@@ -18,29 +18,17 @@
     </style>
 </head>
 <body>
-<h2>Aggiungere voto di ciascuno studente</h2>
-<table>
-    <thead>
-    <tr>
-        <th> Nome </th>
-        <th> Cognome </th>
-        <th> Email </th>
-        <th> Materia </th>
-        <th> Data </th>
-        <th> Voto</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="student : ${students}">
-        <td th:text="${student.name}"></td>
-        <td th:text="${student.surname}"></td>
-        <td th:text="${student.email}"></td>
-        <td th:text="${subject}"></td>
-        <td th:text="${date}"></td>
-        <td> <input type="text"></td>
-    </tr>
-    </tbody>
-</table>
-
+    <h2>Aggiungere voto di ciascuno studente</h2>
+    <th:block th:each="student: ${students}">
+        <form th:action="register" th:method="post" th:object="${userForm}">
+            <input th:name="name" th:value="${student.name}"/>
+            <input th:name="surname" th:value="${student.surname}"/>
+            <input th:name="email" th:value="${student.email}"/>
+            <input th:name="subject" th:value="${subject}"/>
+            <input th:name="date" th:value="${date}"/>
+            <input th:name="mark" type="text" placeholder="voto"/>
+            <button class="submit-button" type="submit">Save</button>
+        </form>
+    </th:block>
 </body>
 </html>

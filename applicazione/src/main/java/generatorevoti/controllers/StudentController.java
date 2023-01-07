@@ -31,7 +31,7 @@ public class StudentController {
     }
 
     private Student map(String email, Information input){
-        return new Student(email, input.getName(), input.getSurname(), input.getClazz(), input.getAcademicYear());
+        return new Student(email, input.getName(), input.getSurname());
     }
 
     @ExceptionHandler(StudentException.class)

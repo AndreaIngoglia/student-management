@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Aggiungere voti</title>
+    <style>
+    td {
+        padding: 15px;
+        text-align: ;
+        border-bottom: 2px solid #ddd;
+    }
+    th {
+        background-color: #04AA6D;
+        text-align: center;
+        color: white;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+    }
+    </style>
+</head>
+<body>
+<h2>Aggiungere voto di ciascuno studente</h2>
+<table>
+    <thead>
+    <tr>
+        <th> Nome </th>
+        <th> Cognome </th>
+        <th> Email </th>
+        <th> Materia </th>
+        <th> Data </th>
+        <th> Voto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.surname}"></td>
+        <td th:text="${student.email}"></td>
+        <td th:text="${subject}"></td>
+        <td th:text="${date}"></td>
+        <td> <input type="text"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

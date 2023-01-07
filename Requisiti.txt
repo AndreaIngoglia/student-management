@@ -1,6 +1,6 @@
-.Memorizzazione studenti: [nome, cognome, classe, anno_corso, email]
-.Memorizzazione voti: [nome, cognome, materia, data, voto]
+.Memorizzazione studenti: [nome, cognome, email]
+.Memorizzazione voti: [nome, cognome, email, materia, data, voto]
 
 .Da frontend: 
-1. Inserire: materia, data, (classe, anno_corso): per recuperare lista di studenti
+1. Inserire: materia, data
 2. Per ciascuno studente della classe di quell'anno (ciclicamente) visualizzare pannello per inserire SOLO il voto.

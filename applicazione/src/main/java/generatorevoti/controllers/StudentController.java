@@ -1,8 +1,8 @@
 package generatorevoti.controllers;
 
-import generatorevoti.StudentService;
+import generatorevoti.services.StudentService;
 import generatorevoti.database.entities.Student;
-import generatorevoti.excpetions.StudentException;
+import generatorevoti.exceptions.StudentException;
 import generatorevoti.utils.Information;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

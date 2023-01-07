@@ -1,4 +1,4 @@
-package generatorevoti.excpetions;
+package generatorevoti.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

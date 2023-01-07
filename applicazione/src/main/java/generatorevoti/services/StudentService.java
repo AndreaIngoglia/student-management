@@ -1,8 +1,8 @@
-package generatorevoti;
+package generatorevoti.services;
 
 import generatorevoti.database.entities.Student;
 import generatorevoti.database.repositories.StudentDao;
-import generatorevoti.excpetions.StudentException;
+import generatorevoti.exceptions.StudentException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

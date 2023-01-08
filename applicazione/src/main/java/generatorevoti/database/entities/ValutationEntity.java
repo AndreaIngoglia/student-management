@@ -12,12 +12,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Valutation {
+public class ValutationEntity {
     @EmbeddedId
     private ValutationId valutationId;
     private String name;
     private String surname;
     private String mark;
     private String clazz;
-    private String academicYear;
 }

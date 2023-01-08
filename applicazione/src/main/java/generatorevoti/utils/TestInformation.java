@@ -9,9 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ValutationPanelInformation {
+public class TestInformation {
     private String subject;
     private String date;
     private String clazz;
-    private String academicYear;
 }

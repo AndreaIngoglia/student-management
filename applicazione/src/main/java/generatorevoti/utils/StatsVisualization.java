@@ -14,6 +14,5 @@ public class StatsVisualization {
     private String name;
     private String surname;
     private String clazz;
-    private String academicYear;
     private String subject;
 }

@@ -13,5 +13,4 @@ public class StudentInformation {
     private String name;
     private String surname;
     private String clazz;
-    private String academicYear;
 }

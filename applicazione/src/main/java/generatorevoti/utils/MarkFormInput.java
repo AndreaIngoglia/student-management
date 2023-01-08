@@ -5,13 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class ValutationVisualization {
-    private String clazz;
+public class MarkFormInput {
+    private String name;
+    private String surname;
+    private String mark;
     private String date;
-    private String academicYear;
     private String subject;
+    private String email;
+    private String clazz;
 }

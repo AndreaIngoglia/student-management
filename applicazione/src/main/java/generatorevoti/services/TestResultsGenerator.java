@@ -4,7 +4,7 @@ import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import generatorevoti.database.entities.Valutation;
+import generatorevoti.database.entities.ValutationEntity;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class ValutationPdfGenerator {
-    public void generate(List<Valutation> valutations, String subject, String clazz, String date, HttpServletResponse response) throws DocumentException, IOException {
+public class TestResultsGenerator {
+    public void generate(List<ValutationEntity> valutations, String subject, String clazz, String date, HttpServletResponse response) throws DocumentException, IOException {
         // Creating the Object of Document
         Document document = new Document(PageSize.A4);
         // Getting instance of PdfWriter
@@ -40,7 +40,7 @@ public class ValutationPdfGenerator {
         cell.setPhrase(new Phrase("Voto"));
         table.addCell(cell);
         // Iterating the list of valutations
-        for (Valutation valutation: valutations) {
+        for (ValutationEntity valutation: valutations) {
             // Adding student name
             table.addCell(String.valueOf(valutation.getName()));
             // Adding student surname

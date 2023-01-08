@@ -4,7 +4,7 @@ import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import generatorevoti.database.entities.Valutation;
+import generatorevoti.database.entities.ValutationEntity;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class StatsPdfGenerator {
-    public void generate(List<Valutation> valutations, String subject, String name, String surname, String academicYear, HttpServletResponse response) throws DocumentException, IOException {
+public class StudentStatsGenerator {
+    public void generate(List<ValutationEntity> valutations, String subject, String name, String surname, HttpServletResponse response) throws DocumentException, IOException {
         // Creating the Object of Document
         Document document = new Document(PageSize.A4);
         // Getting instance of PdfWriter
@@ -21,7 +21,7 @@ public class StatsPdfGenerator {
         // Opening the created document to change it
         document.open();
         // Creating paragraph
-        document.add(new Paragraph(subject + " " + name + " " + surname + " " + academicYear));
+        document.add(new Paragraph(subject + " " + name + " " + surname));
         // Creating a table of 4 columns
         PdfPTable table = new PdfPTable(2);
         // Setting width of the table, its columns and spacing
@@ -36,7 +36,7 @@ public class StatsPdfGenerator {
         cell.setPhrase(new Phrase("Voto"));
         table.addCell(cell);
         // Iterating the list of valutations
-        for (Valutation valutation: valutations) {
+        for (ValutationEntity valutation: valutations) {
             // Adding date
             table.addCell(String.valueOf(valutation.getValutationId().getDate()));
             // Adding mark

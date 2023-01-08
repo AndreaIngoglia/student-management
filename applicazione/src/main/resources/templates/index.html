@@ -44,15 +44,13 @@
                 <th>Materia</th>
                 <th>Data</th>
                 <th>Classe</th>
-                <th>Anno accademico</th>
                 <th>Invia</th>
             </tr>
-            <form th:action="valutationpanel" th:method="get" th:object="${valutationInformation}">
+            <form th:action="testinputpanel" th:method="get" th:object="${testInformation}">
                 <tr>
                     <td><input style="width:100px;" th:name="subject" type="text" placeholder="Materia"/></td>
                     <td><input style="width:100px;" th:name="date" type="text" placeholder="gg-mm-aaaa"/></td>
                     <td><input style="width:100px;" th:name="clazz" type="text" placeholder="classe"/></td>
-                    <td><input style="width:200px;" th:name="academicYear" type="text" placeholder="anno accademico"/></td>
                     <td><button class="button" type="submit" >Vai al pannello</button></td>
                 </tr>
             </form>
@@ -64,14 +62,12 @@
             <tr>
                 <th>Materia</th>
                 <th>Classe</th>
-                <th>Anno accademico</th>
                 <th>Invia</th>
             </tr>
-            <form th:action="statspanel" th:method="get" th:object="${statsInformation}">
+            <form th:action="studentsstatspanel" th:method="get" th:object="${statsInformation}">
                 <tr>
                     <td><input style="width:100px;" th:name="subject" type="text" placeholder="Materia"/></td>
                     <td><input style="width:100px;" th:name="clazz" type="text" placeholder="classe"/></td>
-                    <td><input style="width:200px;" th:name="academicYear" type="text" placeholder="anno accademico"/></td>
                     <td><button class="button" type="submit" >Vai al pannello</button></td>
                 </tr>
             </form>

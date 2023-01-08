@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class StatsInformation {
-    private String academicYear;
     private String clazz;
     private String subject;
 }

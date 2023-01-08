@@ -1,8 +1,8 @@
 package generatorevoti.controllers;
 
 import com.lowagie.text.DocumentException;
-import generatorevoti.database.entities.Valutation;
-import generatorevoti.services.StatsPdfGenerator;
+import generatorevoti.database.entities.ValutationEntity;
+import generatorevoti.services.StudentStatsGenerator;
 import generatorevoti.services.ValutationService;
 import generatorevoti.utils.StatsVisualization;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,9 +21,9 @@ public class StatsController {
     @GetMapping(path = "/pdfstats")
     public void generatePdfFile(HttpServletResponse response, @ModelAttribute StatsVisualization statsPanel) throws DocumentException, IOException
     {
-        List<Valutation> valutations = valutationService.findByNameAndSurnameAndEmailAndAcademicYearAndClazzAndSubject(statsPanel);
+        List<ValutationEntity> valutations = valutationService.findByEmailAndSubject(statsPanel);
         response.setContentType("application/pdf");
-        StatsPdfGenerator generator = new StatsPdfGenerator();
-        generator.generate(valutations, statsPanel.getSubject().toUpperCase(), statsPanel.getName().toUpperCase(), statsPanel.getSurname().toUpperCase(), statsPanel.getAcademicYear(), response);
+        StudentStatsGenerator generator = new StudentStatsGenerator();
+        generator.generate(valutations, statsPanel.getSubject().toUpperCase(), statsPanel.getName().toUpperCase(), statsPanel.getSurname().toUpperCase(), response);
     }
 }

@@ -1,6 +1,6 @@
 package generatorevoti.controllers;
 
-import generatorevoti.database.entities.Student;
+import generatorevoti.database.entities.StudentEntity;
 import generatorevoti.services.StudentService;
 import generatorevoti.utils.*;
 import lombok.AllArgsConstructor;
@@ -18,27 +18,25 @@ public class TemplatesController {
 
     @GetMapping(path = {"/"})
     public String getMainPage(Model model) {
-        model.addAttribute("userForm", new ValutationPanelInformation());
+        model.addAttribute("testInformation", new TestInformation());
         model.addAttribute("statsInformation", new StatsInformation());
         return "index";
     }
 
-    @GetMapping(path = {"/valutationpanel"})
-    public String getValutationInputPanel(@ModelAttribute ValutationPanelInformation panelInformation, Model model) {
-        model.addAttribute("valutationInformation", new ValutationInformation());
-        model.addAttribute("pdfResults", new ValutationVisualization());
-        model.addAttribute("subject", panelInformation.getSubject());
-        model.addAttribute("date", panelInformation.getDate());
-        model.addAttribute("academicYear", panelInformation.getAcademicYear());
-        model.addAttribute("students", studentService.findByClazzAndAcademicYear(panelInformation.getClazz(), panelInformation.getAcademicYear()));
+    @GetMapping(path = {"/testinputpanel"})
+    public String getValutationInputPanel(@ModelAttribute TestInformation testInformation, Model model) {
+        model.addAttribute("markFormInput", new MarkFormInput());
+        model.addAttribute("pdfResults", new TestResultInformation());
+        model.addAttribute("subject", testInformation.getSubject());
+        model.addAttribute("date", testInformation.getDate());
+        model.addAttribute("students", studentService.findByClazz(testInformation.getClazz()));
         return "valutationpanel";
     }
 
-    @GetMapping(path = {"/statspanel"})
+    @GetMapping(path = {"/studentsstatspanel"})
     public String getStatsPanel(@ModelAttribute StatsInformation statsInformation, Model model) {
-        List<Student> students = studentService.findByClazzAndAcademicYear(statsInformation.getClazz(), statsInformation.getAcademicYear());
+        List<StudentEntity> students = studentService.findByClazz(statsInformation.getClazz());
         model.addAttribute("students", students);
-        model.addAttribute("academicYear", statsInformation.getAcademicYear());
         model.addAttribute("subject", statsInformation.getSubject());
         model.addAttribute("statsForm", new StatsVisualization());
         return "statspanel";

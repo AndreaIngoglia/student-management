@@ -1,6 +1,6 @@
 package generatorevoti.controllers;
 
-import generatorevoti.database.entities.Student;
+import generatorevoti.database.entities.StudentEntity;
 import generatorevoti.exceptions.StudentException;
 import generatorevoti.services.StudentService;
 import generatorevoti.utils.StudentInformation;
@@ -26,12 +26,12 @@ public class StudentController {
     }
 
     @PostMapping(path = {"/students"})
-    public String saveAll(@RequestBody List<Student> students){
+    public String saveAll(@RequestBody List<StudentEntity> students){
         return studentService.saveAll(students);
     }
 
-    private Student map(String email, StudentInformation input){
-        return new Student(email, input.getName(), input.getSurname(), input.getClazz(), input.getAcademicYear());
+    private StudentEntity map(String email, StudentInformation input){
+        return new StudentEntity(email, input.getName(), input.getSurname(), input.getClazz());
     }
 
     @ExceptionHandler(StudentException.class)

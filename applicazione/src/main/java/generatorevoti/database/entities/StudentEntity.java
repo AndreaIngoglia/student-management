@@ -14,11 +14,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Student {
+public class StudentEntity {
     @Id
     private String email;
     private String name;
     private String surname;
     private String clazz;
-    private String academicYear;
 }

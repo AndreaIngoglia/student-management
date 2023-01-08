@@ -1,12 +1,12 @@
 package generatorevoti.controllers;
 
 import com.lowagie.text.DocumentException;
-import generatorevoti.database.entities.Valutation;
+import generatorevoti.database.entities.ValutationEntity;
 import generatorevoti.database.entities.ValutationId;
-import generatorevoti.services.ValutationPdfGenerator;
+import generatorevoti.services.TestResultsGenerator;
 import generatorevoti.services.ValutationService;
-import generatorevoti.utils.ValutationInformation;
-import generatorevoti.utils.ValutationVisualization;
+import generatorevoti.utils.MarkFormInput;
+import generatorevoti.utils.TestResultInformation;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,27 +22,22 @@ import java.util.List;
 public class ValutationController {
     private ValutationService valutationService;
 
-    @GetMapping(path = {"/valutations"})
-    public List<Valutation> findAll(){
-        return valutationService.findAll();
-    }
-
     @PostMapping(path = {"/valutation"})
-    public String register(@ModelAttribute ValutationInformation information) {
+    public String register(@ModelAttribute MarkFormInput information) {
         valutationService.save(map(information));
         return "success";
     }
 
     @GetMapping(path = "/pdfvalutations")
-    public void generatePdfFile(HttpServletResponse response, @ModelAttribute ValutationVisualization vv) throws DocumentException, IOException
+    public void generatePdfFile(HttpServletResponse response, @ModelAttribute TestResultInformation testInformation) throws DocumentException, IOException
     {
         response.setContentType("application/pdf");
-        ValutationPdfGenerator generator = new ValutationPdfGenerator();
-        List<Valutation> valutations = valutationService.findByClazzAndSubjectAndDateAndAcademicYear(vv.getClazz(), vv.getSubject(), vv.getDate(), vv.getAcademicYear());
-        generator.generate(valutations, vv.getSubject().toUpperCase(), vv.getClazz().toUpperCase(), vv.getDate().toUpperCase(), response);
+        TestResultsGenerator generator = new TestResultsGenerator();
+        List<ValutationEntity> valutations = valutationService.findByClazzAndSubjectAndDate(testInformation.getClazz(), testInformation.getSubject(), testInformation.getDate());
+        generator.generate(valutations, testInformation.getSubject().toUpperCase(), testInformation.getClazz().toUpperCase(), testInformation.getDate().toUpperCase(), response);
     }
 
-    private Valutation map(ValutationInformation input){
-        return new Valutation(new ValutationId(input.getDate(), input.getSubject(), input.getEmail()), input.getName(), input.getSurname(), input.getMark(), input.getClazz(), input.getAcademicYear());
+    private ValutationEntity map(MarkFormInput input){
+        return new ValutationEntity(new ValutationId(input.getDate(), input.getSubject(), input.getEmail()), input.getName(), input.getSurname(), input.getMark(), input.getClazz());
     }
 }

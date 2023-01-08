@@ -1,2 +1,4 @@
-.creazione pannello: prendere studenti in base a classe e anno (supporre che siano memorizzati molti studenti, di molte classi, anche di anni diversi).
-(modificare la richiesta e prendere anche altri parametri).
+visualizzazione statistiche di uno studente:
+-> inserimento: annoaccademico, classe, materia
+Visualizzazione lista studenti e un bottone per studente. 
+-> Al click del bottone: viene creato un file pdf (in base alla materia inserita) che mostra: TITOLO: nome, cognome, materia, anno accademico e CELLE: data, voto

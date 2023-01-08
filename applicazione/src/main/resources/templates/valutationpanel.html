@@ -1,5 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Pannello salvataggio voti</title>
     <style>
@@ -40,7 +39,7 @@
     </style>
 </head>
 <body>
-    <p style="font-size:50px;">Pannello di salvataggio voti</p>
+    <p style="font-size:25px;">Pannello di salvataggio voti</p>
     <table>
         <tr>
             <th>Nome</th>
@@ -67,13 +66,12 @@
             </form>
         </th:block>
     </table>
-    <form th:action="jsonvalutation" th:method="get" th:object="${jsonResults}">
+    <form th:action="pdfvalutations" th:method="get" th:object="${pdfResults}">
         <input type="hidden" th:name="academicYear" th:value="${academicYear}"/>
         <input type="hidden" th:name="subject" th:value="${subject}"/>
         <input type="hidden" th:name="date" th:value="${date}"/>
         <input type="hidden" th:name="clazz" th:value="${students[0].clazz}"/>
         <button class="button" type="submit" formtarget="_blank">Visualizza risultati</button>
     </form>
-    <p th:text="${valutations}"></p>
 </body>
 </html>

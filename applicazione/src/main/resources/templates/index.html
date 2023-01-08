@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Pagina principale</title>
     <style>
@@ -39,7 +38,7 @@
 </head>
 <body>
     <div>
-        <p style="font-size: 30px;">Registrazione voti</p>
+        <p style="font-size: 25px;">Registrazione voti</p>
         <table>
             <tr>
                 <th>Materia</th>
@@ -48,10 +47,29 @@
                 <th>Anno accademico</th>
                 <th>Invia</th>
             </tr>
-            <form th:action="valutationpanel" th:method="get" th:object="${userForm}">
+            <form th:action="valutationpanel" th:method="get" th:object="${valutationInformation}">
                 <tr>
                     <td><input style="width:100px;" th:name="subject" type="text" placeholder="Materia"/></td>
                     <td><input style="width:100px;" th:name="date" type="text" placeholder="gg-mm-aaaa"/></td>
+                    <td><input style="width:100px;" th:name="clazz" type="text" placeholder="classe"/></td>
+                    <td><input style="width:200px;" th:name="academicYear" type="text" placeholder="anno accademico"/></td>
+                    <td><button class="button" type="submit" >Vai al pannello</button></td>
+                </tr>
+            </form>
+        </table>
+    </div>
+    <div>
+        <p style="font-size: 25px;">Visualizzazione statistiche</p>
+        <table>
+            <tr>
+                <th>Materia</th>
+                <th>Classe</th>
+                <th>Anno accademico</th>
+                <th>Invia</th>
+            </tr>
+            <form th:action="statspanel" th:method="get" th:object="${statsInformation}">
+                <tr>
+                    <td><input style="width:100px;" th:name="subject" type="text" placeholder="Materia"/></td>
                     <td><input style="width:100px;" th:name="clazz" type="text" placeholder="classe"/></td>
                     <td><input style="width:200px;" th:name="academicYear" type="text" placeholder="anno accademico"/></td>
                     <td><button class="button" type="submit" >Vai al pannello</button></td>

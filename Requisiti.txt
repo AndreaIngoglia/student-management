@@ -1,4 +1,3 @@
-visualizzazione statistiche di uno studente:
--> inserimento: annoaccademico, classe, materia
-Visualizzazione lista studenti e un bottone per studente. 
--> Al click del bottone: viene creato un file pdf (in base alla materia inserita) che mostra: TITOLO: nome, cognome, materia, anno accademico e CELLE: data, voto
+.Refactoring dei nomi
+.Verifica correttezza dei controlli
+.Protezione della sovrascrizione dei dati

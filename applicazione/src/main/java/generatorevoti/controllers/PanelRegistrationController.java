@@ -25,9 +25,10 @@ public class PanelRegistrationController {
     }
 
     @PostMapping(path = {"/register"})
+    @ResponseBody
     public String register(@ModelAttribute ValutationInformation information){
         valutationDao.save(map(information));
-        return "index";
+        return "success";
     }
 
     private Valutation map(ValutationInformation input){

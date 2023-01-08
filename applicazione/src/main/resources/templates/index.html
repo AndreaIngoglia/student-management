@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Pannello salvataggio voti</title>
+    <title>Pagina principale</title>
     <style>
-    td {
+        td {
         padding: 15px;
         text-align: ;
         border-bottom: 2px solid #ddd;
@@ -15,9 +16,6 @@
         padding: 15px;
         border-bottom: 1px solid #ddd;
         font-size:20px;
-    }
-    .no-border{
-        border: 0;
     }
     input{
         font-size:16px;
@@ -40,30 +38,26 @@
     </style>
 </head>
 <body>
-    <p style="font-size:50px;">Pannello di salvataggio voti</p>
-    <table>
-        <tr>
-            <th>Nome</th>
-            <th>Cognome</th>
-            <th>Email</th>
-            <th>Materia</th>
-            <th>Data</th>
-            <th>Voto</th>
-            <th>Salva</th>
-        </tr>
-        <th:block th:each="student: ${students}">
-            <form th:action="valutation" th:method="post" th:object="${userForm}">
+    <div>
+        <p style="font-size: 30px;">Registrazione voti</p>
+        <table>
+            <tr>
+                <th>Materia</th>
+                <th>Data</th>
+                <th>Classe</th>
+                <th>Anno accademico</th>
+                <th>Invia</th>
+            </tr>
+            <form th:action="valutationpanel" th:method="get" th:object="${userForm}">
                 <tr>
-                    <td><input class="no-border" th:name="name" th:value="${student.name}"/></td>
-                    <td><input class="no-border" th:name="surname" th:value="${student.surname}"/></td>
-                    <td><input class="no-border" th:name="email" th:value="${student.email}"/></td>
-                    <td><input class="no-border" th:name="subject" th:value="${subject}"/></td>
-                    <td><input class="no-border" th:name="date" th:value="${date}"/></td>
-                    <td><input style="width:100px;" th:name="mark" type="text" placeholder="voto"/></td>
-                    <td><button class="button" type="submit" formtarget="_blank">Invia</button></td>
+                    <td><input style="width:100px;" th:name="subject" type="text" placeholder="Materia"/></td>
+                    <td><input style="width:100px;" th:name="date" type="text" placeholder="gg-mm-aaaa"/></td>
+                    <td><input style="width:100px;" th:name="clazz" type="text" placeholder="classe"/></td>
+                    <td><input style="width:200px;" th:name="academicYear" type="text" placeholder="anno accademico"/></td>
+                    <td><button class="button" type="submit" >Vai al pannello</button></td>
                 </tr>
             </form>
-        </th:block>
-    </table>
+        </table>
+    </div>
 </body>
 </html>

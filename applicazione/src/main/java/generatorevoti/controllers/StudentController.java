@@ -30,6 +30,11 @@ public class StudentController {
         return studentService.findAll();
     }
 
+    @PostMapping(path = {"/students"})
+    public String saveAll(@RequestBody List<Student> students){
+        return studentService.saveAll(students);
+    }
+
     private Student map(String email, Information input){
         return new Student(email, input.getName(), input.getSurname(), input.getClazz(), input.getAcademicYear());
     }

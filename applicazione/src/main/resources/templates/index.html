@@ -52,7 +52,7 @@
             <th>Salva</th>
         </tr>
         <th:block th:each="student: ${students}">
-            <form th:action="register" th:method="post" th:object="${userForm}">
+            <form th:action="valutation" th:method="post" th:object="${userForm}">
                 <tr>
                     <td><input class="no-border" th:name="name" th:value="${student.name}"/></td>
                     <td><input class="no-border" th:name="surname" th:value="${student.surname}"/></td>
@@ -65,6 +65,5 @@
             </form>
         </th:block>
     </table>
-
 </body>
 </html>

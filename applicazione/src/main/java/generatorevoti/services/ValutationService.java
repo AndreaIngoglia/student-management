@@ -15,4 +15,8 @@ public class ValutationService {
     public List<Valutation> findAll(){
         return valutationDao.findAll();
     }
+
+    public Valutation save(Valutation valutation){
+        return valutationDao.save(valutation);
+    }
 }

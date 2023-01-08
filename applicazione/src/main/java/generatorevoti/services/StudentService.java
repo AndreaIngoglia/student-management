@@ -29,6 +29,10 @@ public class StudentService {
     public List<Student> findAll(){
         return studentDao.findAll();
     }
+    public String saveAll(List<Student> students){
+        studentDao.saveAll(students);
+        return "All students have been correctly registered.";
+    }
 
     private String registrationResponse(String name , String surname){
         return String.format("Student %s %s successfully registered.", name, surname);

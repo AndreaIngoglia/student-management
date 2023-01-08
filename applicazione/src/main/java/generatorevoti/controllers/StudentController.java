@@ -1,9 +1,9 @@
 package generatorevoti.controllers;
 
-import generatorevoti.services.StudentService;
 import generatorevoti.database.entities.Student;
 import generatorevoti.exceptions.StudentException;
-import generatorevoti.utils.Information;
+import generatorevoti.services.StudentService;
+import generatorevoti.utils.StudentInformation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping(path = {"/students/{email}"})
-    public String register(@PathVariable String email, @RequestBody Information input) {
+    public String register(@PathVariable String email, @RequestBody StudentInformation input) {
         return studentService.register(map(email, input));
     }
 
@@ -35,7 +35,7 @@ public class StudentController {
         return studentService.saveAll(students);
     }
 
-    private Student map(String email, Information input){
+    private Student map(String email, StudentInformation input){
         return new Student(email, input.getName(), input.getSurname(), input.getClazz(), input.getAcademicYear());
     }
 

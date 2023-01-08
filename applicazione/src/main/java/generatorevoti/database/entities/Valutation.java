@@ -18,4 +18,6 @@ public class Valutation {
     private String name;
     private String surname;
     private String mark;
+    private String clazz;
+    private String academicYear;
 }

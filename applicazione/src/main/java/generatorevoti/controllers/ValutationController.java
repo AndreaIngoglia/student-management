@@ -23,12 +23,12 @@ public class ValutationController {
     }
 
     @PostMapping(path = {"/valutation"})
-    public String register(@ModelAttribute ValutationInformation information){
+    public String register(@ModelAttribute ValutationInformation information) {
         valutationService.save(map(information));
         return "success";
     }
 
     private Valutation map(ValutationInformation input){
-        return new Valutation(new ValutationId(input.getDate(), input.getSubject(), input.getEmail()), input.getName(), input.getSurname(), input.getMark());
+        return new Valutation(new ValutationId(input.getDate(), input.getSubject(), input.getEmail()), input.getName(), input.getSurname(), input.getMark(), input.getClazz(), input.getAcademicYear());
     }
 }

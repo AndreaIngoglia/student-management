@@ -5,17 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class ValutationInformation {
-    private String name;
-    private String surname;
-    private String mark;
-    private String date;
-    private String subject;
-    private String email;
+public class ValutationVisualization {
     private String clazz;
+    private String date;
     private String academicYear;
+    private String subject;
 }

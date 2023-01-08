@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PanelRegistrationController {
     private StudentService studentService;
     @GetMapping(path = {"/table"})
-    public String  greetings(@RequestParam String subject, @RequestParam String date, Model model) {
+    public String  getValutationInputPanel(@RequestParam String subject, @RequestParam String date, Model model) {
         model.addAttribute("userForm", new ValutationInformation());
         model.addAttribute("subject", subject);
         model.addAttribute("date", date);

@@ -29,6 +29,7 @@ public class TemplatesController {
         model.addAttribute("pdfResults", new TestResultInformation());
         model.addAttribute("subject", testInformation.getSubject());
         model.addAttribute("date", testInformation.getDate());
+        model.addAttribute("clazz" , testInformation.getClazz());
         model.addAttribute("students", studentService.findByClazz(testInformation.getClazz()));
         return "valutationpanel";
     }

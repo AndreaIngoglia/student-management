@@ -36,12 +36,18 @@ public class StudentStatsGenerator {
         cell.setPhrase(new Phrase("Voto"));
         table.addCell(cell);
         // Iterating the list of valutations
+        double count = 0;
+        double sum = 0;
         for (ValutationEntity valutation: valutations) {
             // Adding date
             table.addCell(String.valueOf(valutation.getValutationId().getDate()));
             // Adding mark
             table.addCell(valutation.getMark());
+            sum += Double.parseDouble(valutation.getMark());
+            count ++;
         }
+        double mean = sum/count;
+        document.add(new Paragraph("Media generale dello studente: " + mean));
         // Adding the created table to the document
         document.add(table);
         // Closing the document

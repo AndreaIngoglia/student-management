@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Aggiungere voti</title>
+    <title>Pannello salvataggio voti</title>
     <style>
     td {
         padding: 15px;
@@ -14,21 +14,57 @@
         color: white;
         padding: 15px;
         border-bottom: 1px solid #ddd;
+        font-size:20px;
+    }
+    .no-border{
+        border: 0;
+    }
+    input{
+        font-size:16px;
+        text-align: center;
+        padding: 15px;
+    }
+    .button {
+        background-color: #e7e7e7;
+        border: none;
+        color: black;
+        padding: 15px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    .button:hover{
+        background-color: #555555;
+        color: white;
     }
     </style>
 </head>
 <body>
-    <h2>Aggiungere voto di ciascuno studente</h2>
-    <th:block th:each="student: ${students}">
-        <form th:action="register" th:method="post" th:object="${userForm}">
-            <input th:name="name" th:value="${student.name}"/>
-            <input th:name="surname" th:value="${student.surname}"/>
-            <input th:name="email" th:value="${student.email}"/>
-            <input th:name="subject" th:value="${subject}"/>
-            <input th:name="date" th:value="${date}"/>
-            <input th:name="mark" type="text" placeholder="voto"/>
-            <button class="submit-button" type="submit">Save</button>
-        </form>
-    </th:block>
+    <p style="font-size:50px;">Pannello di salvataggio voti</p>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+            <th>Materia</th>
+            <th>Data</th>
+            <th>Voto</th>
+            <th>Salva</th>
+        </tr>
+        <th:block th:each="student: ${students}">
+            <form th:action="register" th:method="post" th:object="${userForm}">
+                <tr>
+                    <td><input class="no-border" th:name="name" th:value="${student.name}"/></td>
+                    <td><input class="no-border" th:name="surname" th:value="${student.surname}"/></td>
+                    <td><input class="no-border" th:name="email" th:value="${student.email}"/></td>
+                    <td><input class="no-border" th:name="subject" th:value="${subject}"/></td>
+                    <td><input class="no-border" th:name="date" th:value="${date}"/></td>
+                    <td><input style="width:100px;" th:name="mark" type="text" placeholder="voto"/></td>
+                    <td><button class="button" type="submit" >Invia</button></td>
+                </tr>
+            </form>
+        </th:block>
+    </table>
+
 </body>
 </html>

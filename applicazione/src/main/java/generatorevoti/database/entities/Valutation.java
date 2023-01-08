@@ -1,5 +1,6 @@
 package generatorevoti.database.entities;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -13,11 +14,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Valutation {
-    @Id
-    private String email;
+    @EmbeddedId
+    private ValutationId valutationId;
     private String name;
     private String surname;
-    private String subject;
     private String mark;
-    private String date;
 }

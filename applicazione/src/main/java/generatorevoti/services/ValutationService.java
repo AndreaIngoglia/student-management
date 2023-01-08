@@ -2,7 +2,7 @@ package generatorevoti.services;
 
 import generatorevoti.database.entities.Valutation;
 import generatorevoti.database.repositories.ValutationDao;
-import generatorevoti.utils.ValutationStatsPanel;
+import generatorevoti.utils.StatsVisualization;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +26,8 @@ public class ValutationService {
                         && date.equalsIgnoreCase(v.getValutationId().getDate()) && academicYear.equalsIgnoreCase(v.getAcademicYear()))
                 .collect(Collectors.toList());
     }
-    public List<Valutation> findByNameAndSurnameAndEmailAndAcademicYearAndClazzAndSubject(ValutationStatsPanel statsPanel){
+    public List<Valutation> findByNameAndSurnameAndEmailAndAcademicYearAndClazzAndSubject(StatsVisualization statsVisualization){
         return valutationDao.findByValutationIdEmailAndNameAndSurnameAndAcademicYearAndClazzAndValutationIdSubject(
-                statsPanel.getEmail(),statsPanel.getName(), statsPanel.getSurname(), statsPanel.getAcademicYear(), statsPanel.getClazz(), statsPanel.getSubject());
+                statsVisualization.getEmail(),statsVisualization.getName(), statsVisualization.getSurname(), statsVisualization.getAcademicYear(), statsVisualization.getClazz(), statsVisualization.getSubject());
     }
 }

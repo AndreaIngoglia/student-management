@@ -2,7 +2,6 @@ package generatorevoti.controllers;
 
 import generatorevoti.database.entities.Student;
 import generatorevoti.services.StudentService;
-import generatorevoti.services.ValutationService;
 import generatorevoti.utils.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 public class TemplatesController {
     private StudentService studentService;
-    private ValutationService valutationService;
 
     @GetMapping(path = {"/"})
     public String getMainPage(Model model) {
@@ -42,7 +40,7 @@ public class TemplatesController {
         model.addAttribute("students", students);
         model.addAttribute("academicYear", statsInformation.getAcademicYear());
         model.addAttribute("subject", statsInformation.getSubject());
-        model.addAttribute("statsForm", new ValutationStatsPanel());
+        model.addAttribute("statsForm", new StatsVisualization());
         return "statspanel";
     }
 }

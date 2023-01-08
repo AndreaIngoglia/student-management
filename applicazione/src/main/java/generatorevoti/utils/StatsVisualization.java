@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ValutationStatsPanel {
+public class StatsVisualization {
     private String email;
     private String name;
     private String surname;

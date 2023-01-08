@@ -25,11 +25,6 @@ public class StudentController {
         return studentService.delete(email);
     }
 
-    @GetMapping(path = {"/students"})
-    public List<Student> findAll(){
-        return studentService.findAll();
-    }
-
     @PostMapping(path = {"/students"})
     public String saveAll(@RequestBody List<Student> students){
         return studentService.saveAll(students);

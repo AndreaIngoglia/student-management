@@ -26,9 +26,6 @@ public class StudentService {
         return deletionResponse(student.getName(), student.getSurname());
     }
 
-    public List<Student> findAll(){
-        return studentDao.findAll();
-    }
     public String saveAll(List<Student> students){
         studentDao.saveAll(students);
         return "All students have been correctly registered.";

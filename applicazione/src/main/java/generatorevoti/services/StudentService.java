@@ -34,6 +34,10 @@ public class StudentService {
         return "All students have been correctly registered.";
     }
 
+    public List<Student> findByClazzAndAcademicYear(String clazz, String academicYear){
+        return studentDao.findByClazzAndAcademicYear(clazz, academicYear);
+    }
+
     private String registrationResponse(String name , String surname){
         return String.format("Student %s %s successfully registered.", name, surname);
     }

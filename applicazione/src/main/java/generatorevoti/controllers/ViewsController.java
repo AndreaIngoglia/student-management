@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @AllArgsConstructor
@@ -25,7 +24,7 @@ public class ViewsController {
         model.addAttribute("userForm", new ValutationInformation());
         model.addAttribute("subject", panelInformation.getSubject());
         model.addAttribute("date", panelInformation.getDate());
-        model.addAttribute("students", studentService.findAll());
+        model.addAttribute("students", studentService.findByClazzAndAcademicYear(panelInformation.getClazz(), panelInformation.getAcademicYear()));
         return "valutationpanel";
     }
 }

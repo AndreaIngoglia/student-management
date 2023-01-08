@@ -1,6 +1,2 @@
-.Memorizzazione studenti: [nome, cognome, email]
-.Memorizzazione voti: [nome, cognome, email, materia, data, voto]
-
-.Da frontend: 
-1. Inserire: materia, data
-2. Per ciascuno studente della classe di quell'anno (ciclicamente) visualizzare pannello per inserire SOLO il voto.
+.creazione pannello: prendere studenti in base a classe e anno (supporre che siano memorizzati molti studenti, di molte classi, anche di anni diversi).
+(modificare la richiesta e prendere anche altri parametri).

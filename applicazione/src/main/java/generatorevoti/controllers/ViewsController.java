@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @AllArgsConstructor
-public class PanelRegistrationController {
+public class ViewsController {
     private StudentService studentService;
     @GetMapping(path = {"/table"})
     public String  getValutationInputPanel(@RequestParam String subject, @RequestParam String date, Model model) {

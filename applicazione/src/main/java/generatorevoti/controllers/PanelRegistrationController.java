@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
-public class TableViewController {
+public class PanelRegistrationController {
     private StudentService studentService;
     private ValutationDao valutationDao;
     @GetMapping(path = {"/table"})

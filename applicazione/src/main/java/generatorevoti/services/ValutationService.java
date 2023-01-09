@@ -1,6 +1,7 @@
 package generatorevoti.services;
 
 import generatorevoti.database.entities.ValutationEntity;
+import generatorevoti.database.entities.ValutationId;
 import generatorevoti.database.repositories.ValutationRepository;
 import generatorevoti.utils.StatsVisualization;
 import lombok.AllArgsConstructor;
@@ -30,5 +31,8 @@ public class ValutationService {
     public List<ValutationEntity> findByEmailAndSubject(StatsVisualization statsVisualization){
         return valutationRepository
                 .findByValutationIdEmailAndValutationIdSubject(statsVisualization.getEmail(), statsVisualization.getSubject());
+    }
+    public boolean alreadyExists(ValutationId id){
+        return valutationRepository.existsById(id);
     }
 }

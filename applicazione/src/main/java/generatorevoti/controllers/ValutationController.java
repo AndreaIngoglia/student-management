@@ -3,16 +3,14 @@ package generatorevoti.controllers;
 import com.lowagie.text.DocumentException;
 import generatorevoti.database.entities.ValutationEntity;
 import generatorevoti.database.entities.ValutationId;
+import generatorevoti.exceptions.ValutationExpression;
 import generatorevoti.services.TestResultsGenerator;
 import generatorevoti.services.ValutationService;
 import generatorevoti.utils.MarkFormInput;
 import generatorevoti.utils.TestResultInformation;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,6 +22,14 @@ public class ValutationController {
 
     @PostMapping(path = {"/valutation"})
     public String register(@ModelAttribute MarkFormInput information) {
+        if(valutationService.alreadyExists(new ValutationId(information.getDate(), information.getSubject(), information.getEmail()))){
+            throw new ValutationExpression("This mark has already been registered in this system.");
+        }
+        try{
+            Double.parseDouble(information.getMark());
+        }catch (NumberFormatException e){
+            throw new ValutationExpression("Please, use the '.' (point) character for decimal marks.");
+        }
         valutationService.save(map(information));
         return "success";
     }
@@ -39,5 +45,9 @@ public class ValutationController {
 
     private ValutationEntity map(MarkFormInput input){
         return new ValutationEntity(new ValutationId(input.getDate(), input.getSubject(), input.getEmail()), input.getName(), input.getSurname(), input.getMark(), input.getClazz());
+    }
+    @ExceptionHandler(ValutationExpression.class)
+    public String exceptionHandler(ValutationExpression e){
+        return e.getError();
     }
 }

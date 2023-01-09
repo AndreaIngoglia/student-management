@@ -1,3 +1,2 @@
-.Refactoring dei nomi
-.Verifica correttezza dei controlli
-.Protezione della sovrascrizione dei dati
+.Allacciamento con un vero database (ricercare il migliore da scaricare in locale).
+.Invio via email del risultato di una verifica in modo automatico.
